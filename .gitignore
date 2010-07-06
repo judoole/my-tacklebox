@@ -4,12 +4,12 @@
 .settings
 .loadpath
 .DS_Store
-domain/ant/builddir/sql_hsql.ddl
 .actionScriptProperties
 .flexProperties
 .flexLibProperties
 .externalToolBuilders
 FlexUnitCompilerApplication.mxml
+application_temp_flex_main_class_config.xml
 FlexUnitApplication.mxml
 *flexunit_config.xml
 *.log

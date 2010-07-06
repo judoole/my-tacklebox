@@ -1,4 +1,28 @@
 <?xml version="1.0"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark">
-    <s:Button label="Click"/>
-</s:Application>
+<dynamic:DynamicApplication
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark"
+        xmlns:dynamic="application.*"
+        initialize="init()">
+    <fx:Script><![CDATA[
+        import domain.Person;
+
+        import mockremote.MockPersonServiceRemote;
+
+        import repo.PersonRepositoryImpl;
+
+        [Bindable]
+        private var person:Person;
+
+        private function init():void {
+            addBean("personService", new MockPersonServiceRemote());
+            addBean("personRepo", new PersonRepositoryImpl());
+
+            person = new Person();
+        }
+        ]]></fx:Script>
+
+    <s:VGroup>
+        <s:Button label="Click" click="{person.save()}" enabled="{!person.serverCommunication.isCommunicating}"/>
+    </s:VGroup>
+</dynamic:DynamicApplication>
