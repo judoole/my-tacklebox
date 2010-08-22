@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:vo="vo.*"
+               xmlns:controls="mx.controls.*" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:boxes="boxes.*">
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+    <fx:Script>
+        import vo.DelayedPropertiesProxy;
+        import vo.Person;
+    </fx:Script>
+
+    <!-- A bunch of Persons -->
+    <fx:Declarations>
+        <s:ArrayCollection id="persons" source="{[mikael, christian, stig, john, jorgen, thomas, eivind]}"/>
+
+        <vo:Person id="mikael" firstname="Mikael" lastname="Bay" uniqueId="1"/>
+        <vo:Person id="christian" firstname="Christian" lastname="Mashveen" uniqueId="2"/>
+        <vo:Person id="stig" firstname="Stig" lastname="Delighted" uniqueId="3"/>
+        <vo:Person id="john" firstname="John" lastname="Crosscape" uniqueId="4"/>
+        <vo:Person id="jorgen" firstname="Jørgen" lastname="Goodseth" uniqueId="5"/>
+        <vo:Person id="thomas" firstname="Thomas" lastname="French" uniqueId="6"/>
+        <vo:Person id="eivind" firstname="Eivind" lastname="Rock Westerhouse" uniqueId="7"/>
+
+        <!-- He is the One -->
+        <vo:Person id="selectedPerson"/>
+    </fx:Declarations>
+
+    <controls:DataGrid id="datagrid" dataProvider="{persons}" width="500" height="220" doubleClickEnabled="true"
+            doubleClick="{selectedPerson = datagrid.selectedItem as Person }"/>
+    
+    <mx:HBox width="100%">
+        <boxes:RegualarForm selectedPerson="{selectedPerson}" persons="{persons}"/>
+        <boxes:BidirectionalForm selectedPerson="{selectedPerson}"/>
+    </mx:HBox>
+    <boxes:ObjectProxyForm selectedPerson="{new DelayedPropertiesProxy(selectedPerson)}"/>
+</s:Application>

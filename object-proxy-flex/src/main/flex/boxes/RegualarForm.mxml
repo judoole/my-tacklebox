@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<mx:Form xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:vo="vo.*">
+    <vo:Person id="selectedPerson"/>
+    <mx:ArrayCollection id="persons"/>
+
+    <mx:Label text="Regualar binding (Flex 3)" fontWeight="bold"/>
+    <mx:FormItem label="Firstname">
+        <mx:TextInput id="firstname" text="{selectedPerson.firstname}"/>
+    </mx:FormItem>
+    <mx:FormItem label="Lastname">
+        <mx:TextInput id="lastname" text="{selectedPerson.lastname}"/>
+    </mx:FormItem>
+    <mx:Button label="Save" click="save()"/>
+
+    <mx:Script><![CDATA[
+        private function save():void {
+            for (var i:int = 0; i < persons.length; i++) {
+                if (persons.getItemAt(i).uniqueId == selectedPerson.uniqueId){
+                    persons.setItemAt(new Person(selectedPerson.uniqueId, firstname.text, lastname.text), i); 
+                }
+            }
+        }
+        ]]></mx:Script>
+</mx:Form>

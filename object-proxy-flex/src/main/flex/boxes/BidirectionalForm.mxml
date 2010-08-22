@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<mx:Form xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:vo="vo.*">
+    <vo:Person id="selectedPerson"/>
+
+    <mx:Label text="Bidirectional (Flex 4)" fontWeight="bold"/>
+    <mx:FormItem label="Firstname">
+        <mx:TextInput text="@{selectedPerson.firstname}"/>
+    </mx:FormItem>
+    <mx:FormItem label="Lastname">
+        <mx:TextInput text="@{selectedPerson.lastname}"/>
+    </mx:FormItem>
+</mx:Form>
